@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # from scipy.ndimage import rotate
 # from scipy.spatial import Delaunay
 
-from osgeo import gdal
+# from osgeo import gdal
 
 # import pandas as pd
 # import geopandas as gpd
@@ -43,14 +43,11 @@ import plotting3D as pl3
     
 def main():
     
-    # close opened files if needed ::::::::::
-    
-    
-    # --------------------------------------------
-    
     plt.close('all')
     
     gdf_proj, gdf = vf.extractUTMscenery2(cc.BBOX, cc.tags)
+    
+    gdf_proj = vf.filterNonPolygonsOut(gdf_proj)
     
     crsInUse = gdf_proj.crs   # to be used later on when loading baseMap
            

@@ -5,6 +5,16 @@ import matplotlib.pyplot as plt
 from scipy.spatial import Delaunay
 from shapely.geometry import Polygon
 
+# import geopandas as gpd
+# import pandas as pd
+
+#%% -----------------------------------------------------------------
+def filterNonPolygonsOut(gdf):
+    # From: https://gis.stackexchange.com/questions/425326/delete-rows-in-geopandas-geodataframe-object-based-on-geometry-shapely-geometry
+    
+    gdf = gdf[gdf.geom_type != 'Point']
+    return gdf
+
 #%% -----------------------------------------------------------------
 
 def dPointLine(x0,x1,x2):
@@ -561,34 +571,23 @@ def polygonFromArrayArrays(x,y):
     
     return out_poly
 
+#%% ------------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
-
-def polygonFrom2array_arrays(x,y):
-    # x and y are two array.array same length inputs containing 
-    # the output closed polygon vertices
+# def polygonFrom2array_arrays(x,y):
+#     # x and y are two array.array same length inputs containing 
+#     # the output closed polygon vertices
     
-    import shapely.geometry as sg
+#     import shapely.geometry as sg
     
-    points = []
-    for ii in range(len(sx)):
-        currPnt = sg.Point(x[ii], y[ii])
-        points2.append(currPnt)
+#     points = []
+#     for ii in range(len(sx)):
+#         currPnt = sg.Point(x[ii], y[ii])
+#         points2.append(currPnt)
         
-    poly2 = sg.Polygon([[p.x, p.y] for p in points2])
+#     poly2 = sg.Polygon([[p.x, p.y] for p in points2])
     
     
     
     
     
-    return poly_out
+#     return poly_out
